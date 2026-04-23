@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Harsha Vardhan Mitta - Application Developer at IBM specializing in AEM, AI/ML, and Quantum Computing">
+    <meta name="author" content="Harsha Vardhan Mitta">
+    <title>Harsha Vardhan Mitta | Application Developer @ IBM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --bg:#070d1a;
+            --bg2:#0d1526;
+            --bg3:#121e35;
+            --cyan:#00d4ff;
+            --cyan2:#00a8cc;
+            --cyan3:rgba(0,212,255,0.12);
+            --text:#e2e8f0;
+            --text2:#94a3b8;
+            --text3:#4b6080;
+            --border:rgba(0,212,255,0.15);
+            --glow:rgba(0,212,255,0.35);
+        }
+        html{scroll-behavior:smooth}
+        body{font-family:'Syne',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;cursor:none}
+
+        /* CUSTOM CURSOR */
+        #cursor{position:fixed;width:10px;height:10px;background:var(--cyan);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:difference}
+        #cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid var(--cyan);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .12s ease;opacity:.6}
+
+        /* NAV */
+        nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1.1rem 2.5rem;display:flex;justify-content:space-between;align-items:center;background:rgba(7,13,26,0.85);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+        .nav-logo{font-family:'JetBrains Mono',monospace;font-size:1.3rem;font-weight:700;color:var(--cyan);letter-spacing:.05em}
+        .nav-links{display:flex;gap:2rem;list-style:none}
+        .nav-links a{color:var(--text2);font-size:.88rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;position:relative;transition:color .3s}
+        .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--cyan);transition:width .3s}
+        .nav-links a:hover{color:var(--cyan)}
+        .nav-links a:hover::after{width:100%}
+        .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+        .hamburger span{width:24px;height:2px;background:var(--cyan);transition:all .3s}
+        .hamburger.active span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+        .hamburger.active span:nth-child(2){opacity:0}
+        .hamburger.active span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+
+        /* HERO */
+        #hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+        #particles-canvas{position:absolute;inset:0;width:100%;height:100%;z-index:1}
+        .hero-content{position:relative;z-index:2;text-align:center;padding:2rem;max-width:900px}
+        .hero-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--cyan);letter-spacing:.2em;text-transform:uppercase;border:1px solid var(--border);padding:.4rem 1.2rem;border-radius:100px;margin-bottom:1.5rem;background:var(--cyan3)}
+        .hero-content h1{font-size:clamp(2.8rem,8vw,5.5rem);font-weight:800;line-height:1.05;letter-spacing:-.02em;margin-bottom:1.2rem;background:linear-gradient(135deg,#fff 40%,var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .typewriter{font-family:'JetBrains Mono',monospace;font-size:clamp(1rem,3vw,1.5rem);color:var(--cyan);min-height:2.5rem;display:flex;align-items:center;justify-content:center;margin-bottom:2.5rem}
+        .typewriter-text::after{content:'█';animation:blink .9s infinite;font-size:.9em;margin-left:2px}
+        @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+        .hero-buttons{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap}
+        .btn{padding:.9rem 2.2rem;border-radius:6px;font-weight:700;font-size:.95rem;letter-spacing:.04em;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;font-family:'Syne',sans-serif}
+        .btn-primary{background:var(--cyan);color:var(--bg);border:2px solid var(--cyan)}
+        .btn-primary:hover{background:var(--cyan2);transform:translateY(-3px);box-shadow:0 12px 35px var(--glow)}
+        .btn-secondary{background:transparent;color:var(--cyan);border:2px solid var(--cyan)}
+        .btn-secondary:hover{background:var(--cyan3);transform:translateY(-3px);box-shadow:0 12px 35px var(--glow)}
+
+        /* SECTIONS */
+        .section-wrap{padding:6rem 2.5rem;max-width:1300px;margin:0 auto}
+        .section-wrap.fade-in{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+        .section-wrap.visible{opacity:1;transform:translateY(0)}
+        .section-head{display:flex;align-items:center;gap:1.5rem;margin-bottom:3.5rem}
+        .section-num{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--cyan);letter-spacing:.15em}
+        .section-title{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;letter-spacing:-.02em}
+        .section-line{flex:1;height:1px;background:var(--border)}
+
+        /* ABOUT */
+        .about-grid{display:grid;grid-template-columns:auto 1fr;gap:4rem;align-items:center}
+        .profile-photo{width:210px;height:210px;border-radius:50%;background:linear-gradient(135deg,var(--bg2),var(--bg3));border:3px solid var(--cyan);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:3rem;font-weight:700;color:var(--cyan);box-shadow:0 0 50px var(--glow),inset 0 0 30px rgba(0,212,255,.05);flex-shrink:0;position:relative}
+        .profile-photo::after{content:'';position:absolute;inset:-8px;border-radius:50%;border:1px dashed rgba(0,212,255,.3);animation:spin 20s linear infinite}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        .about-bio{font-size:1.1rem;color:var(--text2);line-height:1.9;margin-bottom:2rem}
+        .about-bio span{color:var(--cyan);font-weight:600}
+        .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+        .stat-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1.4rem 1rem;text-align:center;transition:all .3s}
+        .stat-card:hover{border-color:var(--cyan);transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,212,255,.15)}
+        .stat-num{font-family:'JetBrains Mono',monospace;font-size:2rem;font-weight:700;color:var(--cyan)}
+        .stat-label{font-size:.82rem;color:var(--text3);margin-top:.3rem;letter-spacing:.05em;text-transform:uppercase}
+
+        /* EXPERIENCE */
+        .exp-card{background:var(--bg2);border-radius:12px;border:1px solid var(--border);border-left:3px solid var(--cyan);padding:2.5rem;position:relative;overflow:hidden}
+        .exp-card::before{content:'';position:absolute;top:0;right:0;width:200px;height:200px;background:radial-gradient(circle,rgba(0,212,255,.06),transparent 70%);pointer-events:none}
+        .exp-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2rem;flex-wrap:wrap;gap:1rem}
+        .exp-role{font-size:1.5rem;font-weight:800;color:var(--cyan)}
+        .exp-company{font-size:1rem;color:var(--text2);margin-top:.3rem}
+        .exp-date{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--text3);background:var(--bg3);padding:.4rem .9rem;border-radius:100px;border:1px solid var(--border);white-space:nowrap}
+        .exp-list{list-style:none;display:flex;flex-direction:column;gap:.9rem}
+        .exp-list li{padding-left:1.8rem;position:relative;color:var(--text2);line-height:1.75}
+        .exp-list li::before{content:'▹';position:absolute;left:0;color:var(--cyan);font-size:1.1rem;line-height:1.75}
+        .exp-list li strong{color:var(--text)}
+
+        /* SKILLS */
+        .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+        .skill-cat{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.8rem;transition:border-color .3s}
+        .skill-cat:hover{border-color:var(--cyan)}
+        .skill-cat h3{font-family:'JetBrains Mono',monospace;font-size:.85rem;color:var(--cyan);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1.2rem;padding-bottom:.8rem;border-bottom:1px solid var(--border)}
+        .skill-tags{display:flex;flex-wrap:wrap;gap:.6rem}
+        .skill-tag{background:var(--bg3);padding:.45rem 1rem;border-radius:100px;border:1px solid var(--border);color:var(--text2);font-size:.83rem;transition:all .25s;cursor:default}
+        .skill-tag:hover{border-color:var(--cyan);color:var(--cyan);background:var(--cyan3);transform:translateY(-2px)}
+
+        /* PROJECTS */
+        .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:1.8rem}
+        .project-card{background:var(--bg2);border-radius:12px;padding:2rem;border:1px solid var(--border);transition:all .3s;display:flex;flex-direction:column;position:relative;overflow:hidden}
+        .project-card::before{content:'';position:absolute;top:-60px;right:-60px;width:160px;height:160px;background:radial-gradient(circle,rgba(0,212,255,.07),transparent 70%);pointer-events:none;transition:opacity .3s}
+        .project-card:hover{transform:translateY(-8px);border-color:var(--cyan);box-shadow:0 20px 50px rgba(0,212,255,.15)}
+        .project-card:hover::before{opacity:2}
+        .proj-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.8rem}
+        .proj-title{font-size:1.15rem;font-weight:700;color:var(--text)}
+        .proj-date{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--text3)}
+        .proj-badge{display:inline-block;background:rgba(0,212,255,.15);color:var(--cyan);font-size:.72rem;padding:.25rem .7rem;border-radius:100px;border:1px solid rgba(0,212,255,.3);margin-bottom:1rem;font-family:'JetBrains Mono',monospace;letter-spacing:.05em}
+        .proj-tech{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.2rem}
+        .tech-pill{background:var(--bg3);color:var(--text2);padding:.3rem .75rem;border-radius:100px;font-size:.78rem;border:1px solid var(--border)}
+        .proj-desc{color:var(--text2);font-size:.93rem;line-height:1.75;flex-grow:1;margin-bottom:1.5rem}
+        .proj-desc ul{list-style:none;padding:0}
+        .proj-desc li{padding-left:1.2rem;position:relative;margin-bottom:.4rem}
+        .proj-desc li::before{content:'▸';position:absolute;left:0;color:var(--cyan);font-size:.85rem}
+        .proj-link{color:var(--cyan);font-size:.88rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;transition:gap .2s;letter-spacing:.03em}
+        .proj-link:hover{gap:.8rem}
+
+        /* CERTIFICATIONS */
+        .cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:2rem}
+        .cert-group{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:2rem}
+        .cert-group h3{font-family:'JetBrains Mono',monospace;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:1.5rem;padding-bottom:.8rem;border-bottom:1px solid var(--border)}
+        .cert-list{display:flex;flex-direction:column;gap:.75rem}
+        .cert-item{background:var(--bg3);border-left:2px solid var(--cyan);padding:1rem 1.2rem;border-radius:0 8px 8px 0;color:var(--text2);font-size:.9rem;transition:all .25s;line-height:1.5}
+        .cert-item:hover{color:var(--text);background:rgba(0,212,255,.07);transform:translateX(4px)}
+
+        /* EDUCATION */
+        .edu-timeline{position:relative;padding-left:3rem}
+        .edu-timeline::before{content:'';position:absolute;left:8px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--cyan),rgba(0,212,255,.1))}
+        .edu-item{position:relative;margin-bottom:3rem}
+        .edu-item::before{content:'';position:absolute;left:-3rem;top:6px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid var(--cyan);box-shadow:0 0 15px var(--glow)}
+        .edu-degree{font-size:1.2rem;font-weight:700;color:var(--text);margin-bottom:.3rem}
+        .edu-school{color:var(--cyan);font-size:1rem;margin-bottom:.3rem}
+        .edu-meta{font-family:'JetBrains Mono',monospace;font-size:.83rem;color:var(--text3)}
+
+        /* LEADERSHIP */
+        .leadership-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:2.5rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
+        .lead-title{font-size:1.4rem;font-weight:800;color:var(--text);margin-bottom:.4rem}
+        .lead-org{color:var(--cyan);margin-bottom:1rem}
+        .lead-badges{display:flex;gap:.8rem;margin-bottom:1.2rem;flex-wrap:wrap}
+        .lead-badge{background:var(--cyan3);color:var(--cyan);padding:.4rem 1rem;border-radius:100px;font-size:.83rem;border:1px solid rgba(0,212,255,.3);font-family:'JetBrains Mono',monospace}
+        .lead-desc{color:var(--text2);line-height:1.8;font-size:.95rem}
+        .lead-icon{font-size:5rem;opacity:.15}
+
+        /* CONTACT */
+        .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+        .contact-intro{font-size:1.1rem;color:var(--text2);line-height:1.85;margin-bottom:2.5rem}
+        .contact-links{display:flex;flex-direction:column;gap:1rem}
+        .contact-link{display:flex;align-items:center;gap:1.2rem;text-decoration:none;color:var(--text2);padding:1rem 1.5rem;background:var(--bg2);border:1px solid var(--border);border-radius:10px;transition:all .3s;font-size:.95rem}
+        .contact-link:hover{border-color:var(--cyan);color:var(--cyan);transform:translateX(6px);background:var(--cyan3)}
+        .contact-link-icon{width:42px;height:42px;background:var(--bg3);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;border:1px solid var(--border)}
+        .contact-link-text strong{display:block;color:var(--text);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.1rem}
+        .contact-form-box{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:2rem}
+        .contact-form-box h3{font-size:1.2rem;font-weight:700;margin-bottom:1.5rem;color:var(--text)}
+        .form-group{margin-bottom:1.2rem}
+        .form-group label{display:block;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);margin-bottom:.5rem;font-family:'JetBrains Mono',monospace}
+        .form-group input,.form-group textarea{width:100%;padding:.85rem 1rem;background:var(--bg3);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'Syne',sans-serif;font-size:.95rem;transition:border-color .3s,box-shadow .3s;resize:none}
+        .form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px rgba(0,212,255,.1)}
+        .form-group textarea{min-height:130px}
+        .form-success{display:none;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.3);color:var(--cyan);padding:1rem 1.2rem;border-radius:8px;margin-bottom:1rem;font-size:.92rem;text-align:center}
+        .form-success.show{display:block}
+
+        /* FOOTER */
+        footer{background:var(--bg2);border-top:1px solid var(--border);padding:2rem;text-align:center}
+        .footer-inner{max-width:1300px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+        .footer-text{color:var(--text3);font-size:.88rem;font-family:'JetBrains Mono',monospace}
+        .footer-text span{color:var(--cyan)}
+        .footer-socials{display:flex;gap:.8rem}
+        .footer-social{width:36px;height:36px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text2);font-size:1rem;text-decoration:none;transition:all .3s}
+        .footer-social:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-3px)}
+
+        /* SCROLL TO TOP */
+        #scroll-top{position:fixed;bottom:2rem;right:2rem;width:44px;height:44px;background:var(--cyan);color:var(--bg);border:none;border-radius:8px;cursor:pointer;font-size:1.2rem;z-index:500;opacity:0;transform:translateY(10px);transition:all .3s;display:flex;align-items:center;justify-content:center}
+        #scroll-top.show{opacity:1;transform:translateY(0)}
+        #scroll-top:hover{background:var(--cyan2);transform:translateY(-3px)}
+
+        /* RESPONSIVE */
+        @media(max-width:968px){
+            .nav-links{position:fixed;top:65px;right:-100%;flex-direction:column;background:rgba(7,13,26,.97);backdrop-filter:blur(14px);width:260px;padding:2rem;border-left:1px solid var(--border);transition:right .3s;height:calc(100vh - 65px);gap:1.5rem}
+            .nav-links.active{right:0}
+            .hamburger{display:flex}
+            .about-grid{grid-template-columns:1fr;text-align:center}
+            .profile-photo{margin:0 auto}
+            .stats-row{grid-template-columns:repeat(2,1fr)}
+            .contact-grid,.leadership-card{grid-template-columns:1fr}
+            .lead-icon{display:none}
+            .projects-grid,.cert-grid{grid-template-columns:1fr}
+            body{cursor:auto}
+            #cursor,#cursor-ring{display:none}
+        }
+        @media(max-width:600px){
+            .section-wrap{padding:4rem 1.5rem}
+            .stats-row{grid-template-columns:repeat(2,1fr)}
+            nav{padding:1rem 1.5rem}
+        }
+    </style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+    <div class="nav-logo">&lt;HVM /&gt;</div>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certs</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+    <canvas id="particles-canvas"></canvas>
+    <div class="hero-content">
+        <div class="hero-tag">📍 Bangalore, India · IBM</div>
+        <h1>Harsha Vardhan Mitta</h1>
+        <div class="typewriter"><span id="typewriter"></span></div>
+        <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary">View My Work ↓</a>
+            <a href="./resume.pdf" class="btn btn-secondary" download>Download Resume ↗</a>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<div class="section-wrap fade-in" id="about">
+    <div class="section-head">
+        <span class="section-num">01.</span>
+        <h2 class="section-title">About Me</h2>
+        <div class="section-line"></div>
+    </div>
+    <div class="about-grid">
+        <div class="profile-photo">HVM</div>
+        <div>
+            <p class="about-bio">
+                I'm an <span>Application Developer at IBM</span> working on the Technical Specialists track, with a focus on <span>Adobe Experience Manager (AEM)</span> and Java/Web Technologies. My passion lies at the intersection of enterprise content platforms, <span>Generative AI</span>, and <span>Quantum Computing</span>.<br><br>
+                A 2025 B.Tech ECE (Cyber Physical Systems) graduate from SASTRA Deemed University, I've independently built an AI-powered code generator for AEM using LLM orchestration, RAG pipelines, and Figma-to-Code automation — all during bench time. I'm equally comfortable deep-diving into quantum circuits or shipping production OSGi microservices.
+            </p>
+            <div class="stats-row">
+                <div class="stat-card"><div class="stat-num">1+</div><div class="stat-label">Year at IBM</div></div>
+                <div class="stat-card"><div class="stat-num">6</div><div class="stat-label">Projects</div></div>
+                <div class="stat-card"><div class="stat-num">15+</div><div class="stat-label">Certifications</div></div>
+                <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Tech Domains</div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="section-wrap fade-in" id="experience">
+    <div class="section-head">
+        <span class="section-num">02.</span>
+        <h2 class="section-title">Experience</h2>
+        <div class="section-line"></div>
+    </div>
+    <div class="exp-card">
+        <div class="exp-top">
+            <div>
+                <div class="exp-role">Application Developer</div>
+                <div class="exp-company">IBM · Technical Specialists Track · Bangalore, India</div>
+            </div>
+            <div class="exp-date">Nov 2025 – Present</div>
+        </div>
+        <ul class="exp-list">
+            <li>Translate IT requirements into functional and technical designs, models, components, code, unit tests, and documentation as part of the Technical Specialists team.</li>
+            <li>Develop and maintain enterprise solutions using <strong>Adobe Experience Manager (AEM)</strong> and Java & Web Technologies — including Sling Models, HTL, OSGi services, servlets, editable templates, and client libraries.</li>
+            <li><strong>AI Generator for AEM (Bench Project):</strong> Designed and built an end-to-end AI-powered code generation tool using <strong>Groq llama-3.3-70b-versatile</strong> — automating creation of AEM components (HTL, dialog XML, Sling Models, clientlibs), OSGi services/servlets/schedulers, workflow models, and Content Fragment automation via a multi-task orchestration engine.</li>
+            <li><strong>Figma-to-Code Pipeline:</strong> Implemented a Figma integration that parses design URLs, fetches and analyses design trees via the Figma REST API, exports frame PNGs for vision-based generation, and routes to single-component or full page-level AEM generation — bypassing the LLM step for direct design-to-code conversion.</li>
+            <li>Built <strong>OSGi-based microservices</strong> following AEM best practices; integrated filesystem-based project config persistence and a PackageResolver for dynamic sub-package resolution.</li>
+            <li>Exposed generator capabilities through custom <strong>AEM servlet endpoints with CSRF protection</strong>; developed AEM UI pages for project configuration and generation control.</li>
+        </ul>
+    </div>
+</div>
+
+<!-- SKILLS -->
+<div class="section-wrap fade-in" id="skills">
+    <div class="section-head">
+        <span class="section-num">03.</span>
+        <h2 class="section-title">Skills & Technologies</h2>
+        <div class="section-line"></div>
+    </div>
+    <div class="skills-grid">
+        <div class="skill-cat">
+            <h3>AEM & Java Web</h3>
+            <div class="skill-tags">
+                <span class="skill-tag">AEM as Cloud Service</span><span class="skill-tag">Sling Models</span><span class="skill-tag">HTL / Sightly</span><span class="skill-tag">OSGi</span><span class="skill-tag">Java</span><span class="skill-tag">Servlets</span><span class="skill-tag">Dialogs</span><span class="skill-tag">Client Libraries</span><span class="skill-tag">Editable Templates</span><span class="skill-tag">Workflow Models</span>
+            </div>
+        </div>
+        <div class="skill-cat">
+            <h3>AI / GenAI</h3>
+            <div class="skill-tags">
+                <span class="skill-tag">Python</span><span class="skill-tag">TensorFlow</span><span class="skill-tag">LangChain</span><span class="skill-tag">LangGraph</span><span class="skill-tag">CrewAI</span><span class="skill-tag">AutoGen</span><span class="skill-tag">BeeAI</span><span class="skill-tag">RAG</span><span class="skill-tag">Groq</span><span class="skill-tag">Prompt Engineering</span><span class="skill-tag">Vector DBs</span>
+            </div>
+        </div>
+        <div class="skill-cat">
+            <h3>Quantum Computing</h3>
+            <div class="skill-tags">
+                <span class="skill-tag">Qiskit</span><span class="skill-tag">PennyLane</span><span class="skill-tag">BB84</span><span class="skill-tag">E91</span><span class="skill-tag">QTRNG</span><span class="skill-tag">HQNN</span><span class="skill-tag">Quantum Circuits</span><span class="skill-tag">NEQR</span>
+            </div>
+        </div>
+        <div class="skill-cat">
+            <h3>Data & ML</h3>
+            <div class="skill-tags">
+                <span class="skill-tag">Pandas</span><span class="skill-tag">NumPy</span><span class="skill-tag">Scikit-learn</span><span class="skill-tag">Matplotlib</span><span class="skill-tag">Feature Engineering</span><span class="skill-tag">SQL</span><span class="skill-tag">Model Evaluation</span>
+            </div>
+        </div>
+        <div class="skill-cat">
+            <h3>Tools & Others</h3>
+            <div class="skill-tags">
+                <span class="skill-tag">Git</span><span class="skill-tag">REST APIs</span><span class="skill-tag">ThingSpeak</span><span class="skill-tag">Arduino IDE</span><span class="skill-tag">Multithreading</span><span class="skill-tag">OOP</span><span class="skill-tag">C/C++</span><span class="skill-tag">Cryptography</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PROJECTS -->
+<div class="section-wrap fade-in" id="projects">
+    <div class="section-head">
+        <span class="section-num">04.</span>
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="section-line"></div>
+    </div>
+    <div class="projects-grid">
+
+        <div class="project-card">
+            <div class="proj-top"><div class="proj-title">AI Generator for AEM</div><div class="proj-date">2025</div></div>
+            <span class="proj-badge">★ IBM Bench Project</span>
+            <div class="proj-tech"><span class="tech-pill">Groq LLM</span><span class="tech-pill">OSGi</span><span class="tech-pill">HTL</span><span class="tech-pill">Figma API</span><span class="tech-pill">RAG</span><span class="tech-pill">AEM</span><span class="tech-pill">Java</span></div>
+            <div class="proj-desc"><ul>
+                <li>LLM-orchestrated code generation for AEM components, Sling Models, OSGi services & schedulers</li>
+                <li>Figma-to-Code pipeline using Figma REST API for direct design-to-AEM conversion</li>
+                <li>RAG-based Content Fragment automation with multi-task orchestration engine</li>
+                <li>Custom servlet endpoints with CSRF protection and AEM UI control pages</li>
+            </ul></div>
+            <a href="https://github.com/HV66/ai-generator-aem" class="proj-link" target="_blank">View on GitHub →</a>
+        </div>
+
+        <div class="project-card">
+            <div class="proj-top"><div class="proj-title">Quantum ML on MNIST</div><div class="proj-date">Dec 2024</div></div>
+            <div class="proj-tech"><span class="tech-pill">Qiskit</span><span class="tech-pill">TensorFlow</span><span class="tech-pill">HQNN</span><span class="tech-pill">CNN</span><span class="tech-pill">Python</span></div>
+            <div class="proj-desc"><ul>
+                <li>Hybrid quantum-classical models: CNN, HQNN Parallel, HQNN Quanvolution</li>
+                <li><strong style="color:var(--cyan)">99.71% accuracy</strong> with HQNN Parallel (372,234 parameters)</li>
+                <li>Evaluated using precision, recall, F1-score and confusion matrices</li>
+                <li>Optimized model complexity and quantum circuit training time</li>
+            </ul></div>
+            <a href="https://github.com/HV66/quantum-ml-mnist" class="proj-link" target="_blank">View on GitHub →</a>
+        </div>
+
+        <div class="project-card">
+            <div class="proj-top"><div class="proj-title">QKD Simulator</div><div class="proj-date">May 2025</div></div>
+            <div class="proj-tech"><span class="tech-pill">Qiskit</span><span class="tech-pill">Tkinter</span><span class="tech-pill">BB84</span><span class="tech-pill">E91</span><span class="tech-pill">QTRNG</span><span class="tech-pill">Fernet</span><span class="tech-pill">ThingSpeak</span></div>
+            <div class="proj-desc"><ul>
+                <li>Quantum Key Distribution simulator for BB84, E91, and QTRNG protocols</li>
+                <li>Secure key generation using superposition & entanglement quantum circuits</li>
+                <li>Quantum MFA with Fernet-based encryption for USB key storage</li>
+                <li>Real-time ThingSpeak cloud monitoring via REST APIs</li>
+            </ul></div>
+            <a href="https://github.com/HV66/qkd-simulator" class="proj-link" target="_blank">View on GitHub →</a>
+        </div>
+
+        <div class="project-card">
+            <div class="proj-top"><div class="proj-title">Earthquake Risk Prediction</div><div class="proj-date">Apr 2024</div></div>
+            <div class="proj-tech"><span class="tech-pill">Python</span><span class="tech-pill">Scikit-learn</span><span class="tech-pill">Naïve Bayes</span><span class="tech-pill">Random Forest</span><span class="tech-pill">Pandas</span></div>
+            <div class="proj-desc"><ul>
+                <li><strong style="color:var(--cyan)">98.54% accuracy</strong> with Naïve Bayes on USGS seismic datasets</li>
+                <li>Random Forest regression: MSE 0.1556, R² 0.143</li>
+                <li>Data cleaning, feature engineering, and evaluation via F1-score & confusion matrix</li>
+            </ul></div>
+            <a href="https://github.com/HV66/earthquake-risk-prediction" class="proj-link" target="_blank">View on GitHub →</a>
+        </div>
+
+        <div class="project-card">
+            <div class="proj-top"><div class="proj-title">IoT Object Sorting System</div><div class="proj-date">Apr 2024</div></div>
+            <div class="proj-tech"><span class="tech-pill">ESP32</span><span class="tech-pill">C/C++</span><span class="tech-pill">TCS3200</span><span class="tech-pill">Arduino IDE</span><span class="tech-pill">ThingSpeak</span></div>
+            <div class="proj-desc"><ul>
+                <li>Real-time color-based sorting with ESP32 + TCS3200 sensor + servo motors</li>
+                <li>Cloud dashboard on ThingSpeak via HTTP for live monitoring</li>
+                <li>Led end-to-end: software design, hardware interfacing, and cloud integration</li>
+            </ul></div>
+            <a href="https://github.com/HV66/iot-object-sorting" class="proj-link" target="_blank">View on GitHub →</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- CERTIFICATIONS -->
+<div class="section-wrap fade-in" id="certifications">
+    <div class="section-head">
+        <span class="section-num">05.</span>
+        <h2 class="section-title">Certifications</h2>
+        <div class="section-line"></div>
+    </div>
+    <div class="cert-grid">
+        <div class="cert-group">
+            <h3>General & Industry</h3>
+            <div class="cert-list">
+                <div class="cert-item">IBM RAG & Agentic AI Professional Certificate — IBM/Coursera</div>
+                <div class="cert-item">Adobe Certified Professional — AEM Developer</div>
+                <div class="cert-item">IBM Generative & Agentic AI Foundation — 2026</div>
+                <div class="cert-item">Advanced RAG with Vector Databases and Retrievers</div>
+                <div class="cert-item">Build RAG Applications: Get Started</div>
+                <div class="cert-item">Agentic AI with LangGraph, CrewAI, AutoGen and BeeAI</div>
+                <div class="cert-item">Agentic AI with LangChain and LangGraph</div>
+                <div class="cert-item">Build Multimodal Generative AI Applications</div>
+                <div class="cert-item">AI Fundamentals — IBM SkillsBuild</div>
+                <div class="cert-item">Enterprise Design Thinking Practitioner — IBM</div>
+                <div class="cert-item">Python 101 for Data Science — IBM CognitiveClass</div>
+                <div class="cert-item">What is Generative AI — LinkedIn Learning</div>
+                <div class="cert-item">Quantum Enigmas — IBM SkillsBuild</div>
+            </div>
+        </div>
+        <div class="cert-group">
+            <h3>WISER Quantum Program</h3>
+            <div class="cert-list">
+                <div class="cert-item">Quantum Computing & Programming (QBronze) — QWorld & WISER 2025</div>
+                <div class="cert-item">Quantum Algorithms for Portfolio Optimization — Vanguard & WISER</div>
+                <div class="cert-item">Quantum Algorithms for Nonlinear Problems (Module 5) — WISER</div>
+                <div class="cert-item">Quantum Algorithms for PDEs (Module 2) — WISER</div>
+                <div class="cert-item">LCU Challenge Certificate — PennyLane & WISER</div>
+                <div class="cert-item">Trotterization Challenge Certificate — PennyLane & WISER</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- EDUCATION -->
+<div class="section-wrap fade-in" id="education">
+    <div class="section-head">
+        <span class="section-num">06.</span>
+        <h2 class="section-title">Education</h2>
+        <div class="section-line"></div>
+    </div>
+    <div class="edu-timeline">
+        <div class="edu-item">
+            <div class="edu-degree">B.Tech in Electronics & Communication Engineering (Cyber Physical Systems)</div>
+            <div class="edu-school">SASTRA Deemed University, Thanjavur</div>
+            <div class="edu-meta">2021 – 2025 &nbsp;|&nbsp; CGPA: 7.67 / 10</div>
+        </div>
+        <div class="edu-item">
+            <div class="edu-degree">Intermediate — MPC Stream (Class XII)</div>
+            <div class="edu-school">Narayana Junior College, Tirupati</div>
+            <div class="edu-meta">2019 – 2021 &nbsp;|&nbsp; Score: 983 / 1000</div>
+        </div>
+        <div class="edu-item">
+            <div class="edu-degree">Secondary School Certificate (Class X)</div>
+            <div class="edu-school">Sri G. Venkatappa M.E.M. High School, Pulivendula</div>
+            <div class="edu-meta">2018 – 2019 &nbsp;|&nbsp; GPA: 10 / 10</div>
+        </div>
+    </div>
+</div>
+
+<!-- LEADERSHIP -->
+<div class="section-wrap fade-in" id="leadership">
+    <div class="section-head">
+        <span class="section-num">07.</span>
+        <h2 class="section-title">Leadership</h2>
+        <div class="section-line"></div>
+    </div>
+    <div class="leadership-card">
+        <div>
+            <div class="lead-title">Daksh SEEE Events Club</div>
+            <div class="lead-org">SASTRA Deemed University</div>
+            <div class="lead-badges">
+                <span class="lead-badge">Member · 2022</span>
+                <span class="lead-badge">Club Head · Aug 2024</span>
+                <span class="lead-badge">2022 – 2025</span>
+            </div>
+            <p class="lead-desc">Led and organized technical events and workshops for the School of Electrical and Electronics Engineering. Promoted to Club Head in 2024 for initiative and leadership qualities — coordinating team activities, managing event logistics, and fostering a collaborative environment for students to explore emerging technologies.</p>
+        </div>
+        <div class="lead-icon">🏆</div>
+    </div>
+</div>
+
+<!-- CONTACT -->
+<div class="section-wrap fade-in" id="contact">
+    <div class="section-head">
+        <span class="section-num">08.</span>
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="section-line"></div>
+    </div>
+    <div class="contact-grid">
+        <div>
+            <p class="contact-intro">I'm open to interesting opportunities, collaborations on AI/AEM projects, or just a conversation about quantum computing. Drop me a message!</p>
+            <div class="contact-links">
+                <a href="mailto:harshavardhan.mitta27@gmail.com" class="contact-link">
+                    <div class="contact-link-icon">✉️</div>
+                    <div class="contact-link-text"><strong>Email</strong>harshavardhan.mitta27@gmail.com</div>
+                </a>
+                <a href="tel:+918639988968" class="contact-link">
+                    <div class="contact-link-icon">📱</div>
+                    <div class="contact-link-text"><strong>Phone</strong>+91 86399 88968</div>
+                </a>
+                <a href="https://www.linkedin.com/in/harsha-vardhan-mitta-18b6b7275/" target="_blank" class="contact-link">
+                    <div class="contact-link-icon">💼</div>
+                    <div class="contact-link-text"><strong>LinkedIn</strong>harsha-vardhan-mitta-18b6b7275</div>
+                </a>
+                <a href="https://github.com/HV66" target="_blank" class="contact-link">
+                    <div class="contact-link-icon">🐙</div>
+                    <div class="contact-link-text"><strong>GitHub</strong>github.com/HV66</div>
+                </a>
+                <a href="https://leetcode.com/u/HV66/" target="_blank" class="contact-link">
+                    <div class="contact-link-icon">💻</div>
+                    <div class="contact-link-text"><strong>LeetCode</strong>leetcode.com/u/HV66</div>
+                </a>
+            </div>
+        </div>
+        <div class="contact-form-box">
+            <h3>Send a Message</h3>
+            <div class="form-success" id="formSuccess">✅ Message sent! I'll get back to you soon.</div>
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" id="fname" placeholder="Your name">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="femail" placeholder="your@email.com">
+            </div>
+            <div class="form-group">
+                <label>Message</label>
+                <textarea id="fmsg" placeholder="What's on your mind?"></textarea>
+            </div>
+            <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="submitForm()">Send Message ✉</button>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-inner">
+        <div class="footer-text">Built by <span>Harsha Vardhan Mitta</span> · <span>&lt;HVM /&gt;</span> · 2025</div>
+        <div class="footer-socials">
+            <a href="https://github.com/HV66" target="_blank" class="footer-social" title="GitHub">🐙</a>
+            <a href="https://www.linkedin.com/in/harsha-vardhan-mitta-18b6b7275/" target="_blank" class="footer-social" title="LinkedIn">💼</a>
+            <a href="mailto:harshavardhan.mitta27@gmail.com" class="footer-social" title="Email">✉️</a>
+        </div>
+    </div>
+</footer>
+
+<button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// ── CUSTOM CURSOR ──
+const cursor = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{
+    mx=e.clientX; my=e.clientY;
+    cursor.style.left=mx+'px'; cursor.style.top=my+'px';
+});
+function animRing(){
+    rx+=(mx-rx)*.13; ry+=(my-ry)*.13;
+    cursorRing.style.left=rx+'px'; cursorRing.style.top=ry+'px';
+    requestAnimationFrame(animRing);
+}
+animRing();
+document.querySelectorAll('a,button,.skill-tag,.project-card,.cert-item').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cursor.style.width='16px';cursor.style.height='16px';cursorRing.style.width='50px';cursorRing.style.height='50px'});
+    el.addEventListener('mouseleave',()=>{cursor.style.width='10px';cursor.style.height='10px';cursorRing.style.width='36px';cursorRing.style.height='36px'});
+});
+
+// ── HAMBURGER ──
+const ham = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+ham.addEventListener('click',()=>{ham.classList.toggle('active');navLinks.classList.toggle('active')});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ham.classList.remove('active');navLinks.classList.remove('active')}));
+
+// ── TYPEWRITER ──
+const roles=['Application Developer @ IBM','AEM Developer','AI/ML Engineer','Quantum Computing Researcher','GenAI Builder'];
+let ri=0,ci=0,deleting=false;
+const tw=document.getElementById('typewriter');
+function type(){
+    const cur=roles[ri];
+    if(!deleting){tw.textContent=cur.slice(0,++ci);if(ci===cur.length){deleting=true;setTimeout(type,1800);return}}
+    else{tw.textContent=cur.slice(0,--ci);if(ci===0){deleting=false;ri=(ri+1)%roles.length}}
+    setTimeout(type,deleting?55:95);
+}
+type();
+
+// ── PARTICLES CANVAS ──
+const canvas=document.getElementById('particles-canvas');
+const ctx=canvas.getContext('2d');
+let W,H,particles=[],mouse={x:null,y:null};
+function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
+resize();
+window.addEventListener('resize',resize);
+canvas.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY});
+canvas.addEventListener('mouseleave',()=>{mouse.x=null;mouse.y=null});
+
+class Particle{
+    constructor(){this.reset()}
+    reset(){this.x=Math.random()*W;this.y=Math.random()*H;this.vx=(Math.random()-.5)*.4;this.vy=(Math.random()-.5)*.4;this.r=Math.random()*1.5+.5;this.alpha=Math.random()*.6+.2}
+    update(){
+        this.x+=this.vx;this.y+=this.vy;
+        if(this.x<0||this.x>W)this.vx*=-1;
+        if(this.y<0||this.y>H)this.vy*=-1;
+        if(mouse.x!==null){
+            const dx=mouse.x-this.x,dy=mouse.y-this.y,dist=Math.sqrt(dx*dx+dy*dy);
+            if(dist<120){this.vx-=dx/dist*.02;this.vy-=dy/dist*.02}
+        }
+    }
+    draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=`rgba(0,212,255,${this.alpha})`;ctx.fill()}
+}
+
+const COUNT=Math.min(120,Math.floor(W*H/12000));
+for(let i=0;i<COUNT;i++)particles.push(new Particle());
+
+function drawLines(){
+    for(let i=0;i<particles.length;i++){
+        for(let j=i+1;j<particles.length;j++){
+            const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y;
+            const d=Math.sqrt(dx*dx+dy*dy);
+            if(d<130){
+                ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);
+                ctx.strokeStyle=`rgba(0,212,255,${.18*(1-d/130)})`;ctx.lineWidth=.7;ctx.stroke();
+            }
+        }
+        if(mouse.x!==null){
+            const dx=particles[i].x-mouse.x,dy=particles[i].y-mouse.y;
+            const d=Math.sqrt(dx*dx+dy*dy);
+            if(d<160){
+                ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(mouse.x,mouse.y);
+                ctx.strokeStyle=`rgba(0,212,255,${.35*(1-d/160)})`;ctx.lineWidth=1;ctx.stroke();
+            }
+        }
+    }
+}
+
+function animate(){
+    ctx.clearRect(0,0,W,H);
+    // subtle gradient bg overlay
+    const g=ctx.createRadialGradient(W/2,H/2,0,W/2,H/2,Math.max(W,H)/1.5);
+    g.addColorStop(0,'rgba(0,30,60,0.3)');g.addColorStop(1,'transparent');
+    ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+    particles.forEach(p=>{p.update();p.draw()});
+    drawLines();
+    requestAnimationFrame(animate);
+}
+animate();
+
+// ── SCROLL ANIMATIONS ──
+const observer=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:.1});
+document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+
+// ── SCROLL TO TOP ──
+const scrollBtn=document.getElementById('scroll-top');
+window.addEventListener('scroll',()=>{
+    scrollBtn.classList.toggle('show',window.scrollY>400);
+    // nav shrink
+    document.getElementById('navbar').style.padding=window.scrollY>80?'.7rem 2.5rem':'1.1rem 2.5rem';
+});
+
+// ── CONTACT FORM ──
+function submitForm(){
+    const n=document.getElementById('fname').value.trim();
+    const e=document.getElementById('femail').value.trim();
+    const m=document.getElementById('fmsg').value.trim();
+    if(!n||!e||!m){alert('Please fill in all fields.');return}
+    document.getElementById('formSuccess').classList.add('show');
+    document.getElementById('fname').value='';
+    document.getElementById('femail').value='';
+    document.getElementById('fmsg').value='';
+    setTimeout(()=>document.getElementById('formSuccess').classList.remove('show'),5000);
+}
+</script>
+</body>
+</html>
