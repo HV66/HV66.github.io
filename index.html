@@ -682,20 +682,29 @@ async function submitForm(){
     document.getElementById('formSuccess').classList.remove('show');
     document.getElementById('formError').style.display='none';
     try{
-        const res=await fetch('https://formspree.io/f/YOUR_FORM_ID',{
+        const formData=new FormData();
+        formData.append('name',n);
+        formData.append('email',e);
+        formData.append('message',m);
+        const res=await fetch('https://formspree.io/f/mpqkonol',{
             method:'POST',
-            headers:{'Content-Type':'application/json','Accept':'application/json'},
-            body:JSON.stringify({name:n,email:e,message:m})
+            body:formData,
+            headers:{'Accept':'application/json'}
         });
-        if(res.ok){
+        const data=await res.json();
+        if(res.ok && data.ok){
             document.getElementById('formSuccess').classList.add('show');
             document.getElementById('fname').value='';
             document.getElementById('femail').value='';
             document.getElementById('fmsg').value='';
+            setTimeout(()=>document.getElementById('formSuccess').classList.remove('show'),6000);
         } else {
+            const errMsg=data.errors?data.errors.map(e=>e.message).join(', '):'Submission failed.';
+            document.getElementById('formError').innerHTML='❌ '+errMsg;
             document.getElementById('formError').style.display='block';
         }
     } catch(err){
+        document.getElementById('formError').innerHTML='❌ Network error. Please email directly: <a href="mailto:harshavardhan.mitta27@gmail.com" style="color:#ff6b6b">harshavardhan.mitta27@gmail.com</a>';
         document.getElementById('formError').style.display='block';
     }
     btn.textContent='Send Message ✉';btn.disabled=false;
