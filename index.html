@@ -124,6 +124,22 @@
         .proj-link:hover{gap:.8rem}
 
         /* CERTIFICATIONS */
+        /* PUBLICATIONS */
+        .pub-card{background:var(--bg2);border-radius:12px;border:1px solid var(--border);border-left:3px solid var(--cyan);padding:2.5rem;position:relative;overflow:hidden;transition:all .3s}
+        .pub-card::before{content:'';position:absolute;top:0;right:0;width:200px;height:200px;background:radial-gradient(circle,rgba(0,212,255,.06),transparent 70%);pointer-events:none}
+        .pub-card:hover{border-color:var(--cyan);box-shadow:0 15px 40px rgba(0,212,255,.15)}
+        .pub-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;flex-wrap:wrap;gap:1rem}
+        .pub-title{font-size:1.2rem;font-weight:700;color:var(--text);line-height:1.4;flex:1}
+        .pub-venue-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(0,212,255,.15);color:var(--cyan);font-size:.75rem;padding:.35rem .9rem;border-radius:100px;border:1px solid rgba(0,212,255,.3);font-family:'JetBrains Mono',monospace;letter-spacing:.05em;white-space:nowrap}
+        .pub-meta{display:flex;flex-wrap:wrap;gap:1.5rem;margin-bottom:1.2rem}
+        .pub-meta-item{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--text3)}
+        .pub-meta-item span{color:var(--text2)}
+        .pub-abstract{color:var(--text2);font-size:.93rem;line-height:1.8;margin-bottom:1.5rem}
+        .pub-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+        .pub-tag{background:var(--bg3);color:var(--text2);padding:.3rem .75rem;border-radius:100px;font-size:.78rem;border:1px solid var(--border)}
+        .pub-link{color:var(--cyan);font-size:.88rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;transition:gap .2s;letter-spacing:.03em;padding:.5rem 1.2rem;border:1px solid rgba(0,212,255,.3);border-radius:6px;background:var(--cyan3)}
+        .pub-link:hover{gap:.8rem;background:rgba(0,212,255,.2)}
+
         .cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:2rem}
         .cert-group{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:2rem}
         .cert-group h3{font-family:'JetBrains Mono',monospace;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:1.5rem;padding-bottom:.8rem;border-bottom:1px solid var(--border)}
@@ -215,6 +231,7 @@
         <li><a href="#experience">Experience</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
+        <li><a href="#publications">Publications</a></li>
         <li><a href="#certifications">Certs</a></li>
         <li><a href="#education">Education</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -248,13 +265,13 @@
         <div>
             <p class="about-bio">
                 I'm an <span>Application Developer at IBM</span> working on the Technical Specialists track, with a focus on <span>Adobe Experience Manager (AEM)</span> and Java/Web Technologies. My passion lies at the intersection of enterprise content platforms, <span>Generative AI</span>, and <span>Quantum Computing</span>.<br><br>
-                A 2025 B.Tech ECE (Cyber Physical Systems) graduate from SASTRA Deemed University, I've independently built an AI-powered code generator for AEM using LLM orchestration, RAG pipelines, and Figma-to-Code automation — all during bench time. I'm equally comfortable deep-diving into quantum circuits or shipping production OSGi microservices.
+                A 2025 B.Tech ECE (Cyber Physical Systems) graduate from SASTRA Deemed University, I've independently built an AI-powered code generator for AEM using LLM orchestration, RAG pipelines, and Figma-to-Code automation — all during bench time. I'm equally comfortable deep-diving into quantum circuits or shipping production OSGi microservices. I'm also a published IEEE researcher in Quantum Cryptography.
             </p>
             <div class="stats-row">
                 <div class="stat-card"><div class="stat-num">5+</div><div class="stat-label">Months at IBM</div></div>
                 <div class="stat-card"><div class="stat-num">6</div><div class="stat-label">Projects</div></div>
                 <div class="stat-card"><div class="stat-num">15+</div><div class="stat-label">Certifications</div></div>
-                <div class="stat-card"><div class="stat-num">3</div><div class="stat-label">Tech Domains</div></div>
+                <div class="stat-card"><div class="stat-num">1</div><div class="stat-label">IEEE Publication</div></div>
             </div>
         </div>
     </div>
@@ -346,7 +363,7 @@
                 <li>RAG-based Content Fragment automation with multi-task orchestration engine</li>
                 <li>Custom servlet endpoints with CSRF protection and AEM UI control pages</li>
             </ul></div>
-            <a href="https://github.com/HV66/aem-ai-generator" class="proj-link" target="_blank">View on GitHub →</a>
+            <a href="https://github.com/HV66/ai-generator-aem" class="proj-link" target="_blank">View on GitHub →</a>
         </div>
 
         <div class="project-card">
@@ -358,7 +375,7 @@
                 <li>Evaluated using precision, recall, F1-score and confusion matrices</li>
                 <li>Optimized model complexity and quantum circuit training time</li>
             </ul></div>
-            <a href="https://github.com/HV66/Image-Classification-of-MNIST-dataset-using-QML" class="proj-link" target="_blank">View on GitHub →</a>
+            <a href="https://github.com/HV66/quantum-ml-mnist" class="proj-link" target="_blank">View on GitHub →</a>
         </div>
 
         <div class="project-card">
@@ -381,7 +398,7 @@
                 <li>Random Forest regression: MSE 0.1556, R² 0.143</li>
                 <li>Data cleaning, feature engineering, and evaluation via F1-score & confusion matrix</li>
             </ul></div>
-            <a href="https://github.com/HV66/Earthquake-Risk-Prediction" class="proj-link" target="_blank">View on GitHub →</a>
+            <a href="https://github.com/HV66/earthquake-risk-prediction" class="proj-link" target="_blank">View on GitHub →</a>
         </div>
 
         <div class="project-card">
@@ -392,16 +409,45 @@
                 <li>Cloud dashboard on ThingSpeak via HTTP for live monitoring</li>
                 <li>Led end-to-end: software design, hardware interfacing, and cloud integration</li>
             </ul></div>
-            <a href="https://github.com/HV66/Object-Sorting-System" class="proj-link" target="_blank">View on GitHub →</a>
+            <a href="https://github.com/HV66/iot-object-sorting" class="proj-link" target="_blank">View on GitHub →</a>
         </div>
 
+    </div>
+</div>
+
+
+<!-- PUBLICATIONS -->
+<div class="section-wrap fade-in" id="publications">
+    <div class="section-head"><span class="section-num">05.</span><h2 class="section-title">Publications</h2><div class="section-line"></div></div>
+    <div class="pub-card">
+        <div class="pub-top">
+            <div class="pub-title">Quantum Rotational Entropy Model for Reliable Authentication Systems</div>
+            <div class="pub-venue-badge">📄 IEEE Conference Publication</div>
+        </div>
+        <div class="pub-meta">
+            <div class="pub-meta-item">👤 Author: <span>Harsha Vardhan Mitta</span></div>
+            <div class="pub-meta-item">🏛 Venue: <span>IEEE Xplore</span></div>
+            <div class="pub-meta-item">📅 Year: <span>2025</span></div>
+        </div>
+        <p class="pub-abstract">
+            Proposes a novel quantum authentication framework leveraging rotational entropy principles to enhance the reliability and security of authentication systems. The model exploits quantum mechanical properties — including superposition and entanglement — to construct entropy-based authentication tokens that are computationally infeasible to forge under classical or quantum adversarial conditions.
+        </p>
+        <div class="pub-tags">
+            <span class="pub-tag">Quantum Cryptography</span>
+            <span class="pub-tag">Authentication Systems</span>
+            <span class="pub-tag">Rotational Entropy</span>
+            <span class="pub-tag">Quantum Security</span>
+            <span class="pub-tag">Qiskit</span>
+            <span class="pub-tag">IEEE</span>
+        </div>
+        <a href="https://ieeexplore.ieee.org/document/11502992" target="_blank" class="pub-link">View on IEEE Xplore ↗</a>
     </div>
 </div>
 
 <!-- CERTIFICATIONS -->
 <div class="section-wrap fade-in" id="certifications">
     <div class="section-head">
-        <span class="section-num">05.</span>
+        <span class="section-num">06.</span>
         <h2 class="section-title">Certifications</h2>
         <div class="section-line"></div>
     </div>
@@ -441,7 +487,7 @@
 <!-- EDUCATION -->
 <div class="section-wrap fade-in" id="education">
     <div class="section-head">
-        <span class="section-num">06.</span>
+        <span class="section-num">07.</span>
         <h2 class="section-title">Education</h2>
         <div class="section-line"></div>
     </div>
@@ -467,7 +513,7 @@
 <!-- LEADERSHIP -->
 <div class="section-wrap fade-in" id="leadership">
     <div class="section-head">
-        <span class="section-num">07.</span>
+        <span class="section-num">08.</span>
         <h2 class="section-title">Leadership</h2>
         <div class="section-line"></div>
     </div>
@@ -489,7 +535,7 @@
 <!-- CONTACT -->
 <div class="section-wrap fade-in" id="contact">
     <div class="section-head">
-        <span class="section-num">08.</span>
+        <span class="section-num">09.</span>
         <h2 class="section-title">Get In Touch</h2>
         <div class="section-line"></div>
     </div>
@@ -509,9 +555,9 @@
                     <div class="contact-link-icon">📱</div>
                     <div class="contact-link-text"><strong>Phone</strong>+91 86399 88968</div>
                 </a>
-                <a href="https://www.linkedin.com/in/harsha-vardhan-mitta/" target="_blank" class="contact-link">
+                <a href="https://www.linkedin.com/in/harsha-vardhan-mitta-18b6b7275/" target="_blank" class="contact-link">
                     <div class="contact-link-icon">💼</div>
-                    <div class="contact-link-text"><strong>LinkedIn</strong>harsha-vardhan-mitta</div>
+                    <div class="contact-link-text"><strong>LinkedIn</strong>harsha-vardhan-mitta-18b6b7275</div>
                 </a>
                 <a href="https://github.com/HV66" target="_blank" class="contact-link">
                     <div class="contact-link-icon">🐙</div>
@@ -551,6 +597,7 @@
         <div class="footer-socials">
             <a href="https://github.com/HV66" target="_blank" class="footer-social" title="GitHub">🐙</a>
             <a href="https://www.linkedin.com/in/harsha-vardhan-mitta-18b6b7275/" target="_blank" class="footer-social" title="LinkedIn">💼</a>
+            <a href="https://ieeexplore.ieee.org/document/11502992" target="_blank" class="footer-social" title="IEEE Paper">📄</a>
             <a href="mailto:harshavardhan.mitta27@gmail.com" class="footer-social" title="Email">✉️</a>
         </div>
     </div>
@@ -585,7 +632,7 @@ ham.addEventListener('click',()=>{ham.classList.toggle('active');navLinks.classL
 navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ham.classList.remove('active');navLinks.classList.remove('active')}));
 
 // ── TYPEWRITER ──
-const roles=['Application Developer @ IBM','AEM Developer','AI/ML Engineer','Quantum Computing Researcher','GenAI Builder'];
+const roles=['Application Developer @ IBM','AEM Developer','AI/ML Engineer','Quantum Computing Researcher','IEEE Published Researcher'];
 let ri=0,ci=0,deleting=false;
 const tw=document.getElementById('typewriter');
 function type(){
