@@ -367,14 +367,17 @@
         </div>
 
         <div class="project-card">
-            <div class="proj-top"><div class="proj-title">AI Generator for AEM</div><div class="proj-date">2026</div></div>
-            <span class="proj-badge">★ IBM Bench Project</span>
-            <div class="proj-tech"><span class="tech-pill">Groq LLM</span><span class="tech-pill">OSGi</span><span class="tech-pill">HTL</span><span class="tech-pill">Figma API</span><span class="tech-pill">RAG</span><span class="tech-pill">AEM</span><span class="tech-pill">Java</span></div>
+            <div class="proj-top"><div class="proj-title">AEM Orchestrated AI Generator</div><div class="proj-date">2025 – 2026</div></div>
+            <span class="proj-badge">★ IBM Bench Project · Full-Stack OSGi Bundle</span>
+            <div class="proj-tech"><span class="tech-pill">Java 11 / OSGi</span><span class="tech-pill">AEM 6.5 / AEMaaCS</span><span class="tech-pill">Apache Sling</span><span class="tech-pill">Groq</span><span class="tech-pill">Claude</span><span class="tech-pill">IBM Sidekick</span><span class="tech-pill">IBM ICA Gateway</span><span class="tech-pill">Figma API</span><span class="tech-pill">RAG</span><span class="tech-pill">LLM Orchestration</span><span class="tech-pill">Maven</span><span class="tech-pill">HTL</span><span class="tech-pill">JCR</span></div>
             <div class="proj-desc"><ul>
-                <li>LLM-orchestrated code generation for AEM components, Sling Models, OSGi services & schedulers</li>
-                <li>Figma-to-Code pipeline using Figma REST API for direct design-to-AEM conversion</li>
-                <li>RAG-based Content Fragment automation with multi-task orchestration engine</li>
-                <li>Custom servlet endpoints with CSRF protection and AEM UI control pages</li>
+                <li>End-to-end AI code & content generation platform deployed as an AEM OSGi bundle — turns natural-language prompts or Figma URLs into production-ready HTL components, Sling Models, OSGi services, editable templates, workflow models, and Content Fragment models, written directly to disk for Maven deployment</li>
+                <li><strong>4-provider LLM router:</strong> Groq (llama-3.3-70b-versatile), Anthropic Claude, IBM Sidekick, and the newly integrated IBM ICA OpenAI-compatible gateway (LiteLLM — Claude Sonnet 5, GPT, Granite), all sharing three routing methods with per-request API key resolution</li>
+                <li>Orchestrated multi-artifact generation: a single prompt triggers LLM task planning, sorts tasks by execution order, and generates HTL + dialog XML + Sling Model + clientlibs, OSGi, templates, and workflows in one request</li>
+                <li>Figma-to-AEM pipeline: recursive design-tree analysis (frames, text, images, components) auto-generates matching HTL components and page templates with policy XML</li>
+                <li>3-step RAG pipeline for Content Fragment model reuse decisions (CREATE_NEW / EXTEND / REUSE), backed by a filesystem-persisted JSON store with configurable similarity thresholds</li>
+                <li>Standalone AutoBuild system — Java WatchService + polling, debounce, and cooldown — triggers automated Maven builds and AEM deployment after every generation</li>
+                <li>Wired IBM ICA 2.0 as a 4th LLM provider, including smart temperature handling and graceful vision-to-text fallback</li>
             </ul></div>
             <a href="https://github.com/HV66/aem-ai-generator" class="proj-link" target="_blank">View on GitHub →</a>
         </div>
