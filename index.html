@@ -142,10 +142,14 @@
 
         .cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:2rem}
         .cert-group{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:2rem}
-        .cert-group h3{font-family:'JetBrains Mono',monospace;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:1.5rem;padding-bottom:.8rem;border-bottom:1px solid var(--border)}
+        .cert-group h3{font-family:'JetBrains Mono',monospace;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);margin-bottom:1.5rem;padding-bottom:.8rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+        .cert-count{background:var(--cyan3);color:var(--cyan);font-size:.72rem;padding:.2rem .6rem;border-radius:100px;letter-spacing:.02em;text-transform:none}
         .cert-list{display:flex;flex-direction:column;gap:.75rem}
         .cert-item{background:var(--bg3);border-left:2px solid var(--cyan);padding:1rem 1.2rem;border-radius:0 8px 8px 0;color:var(--text2);font-size:.9rem;transition:all .25s;line-height:1.5}
         .cert-item:hover{color:var(--text);background:rgba(0,212,255,.07);transform:translateX(4px)}
+        .cert-item-main{background:var(--cyan3);border-left:3px solid var(--cyan);color:var(--text);font-weight:700;padding:1.1rem 1.2rem}
+        .cert-item-main:hover{background:rgba(0,212,255,.2);transform:translateX(4px)}
+        .cert-sub-label{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;margin:.2rem 0 -.2rem .3rem}
 
         /* EDUCATION */
         .edu-timeline{position:relative;padding-left:3rem}
@@ -355,29 +359,25 @@
 
         <div class="project-card">
             <div class="proj-top"><div class="proj-title">SpecFlow AI — RFP Solution Generator</div><div class="proj-date">2026</div></div>
-            <span class="proj-badge">★ IBM Bobathon 2026 — APAC · Business Applications Track</span>
-            <div class="proj-tech"><span class="tech-pill">IBM Bob IDE</span><span class="tech-pill">ICA Context Studio</span><span class="tech-pill">ICA Agentic App Studio</span><span class="tech-pill">React</span><span class="tech-pill">Node.js</span><span class="tech-pill">GPT-5.2</span></div>
+            <span class="proj-badge">★ IBM Bobathon 2026 — APAC</span>
+            <div class="proj-tech"><span class="tech-pill">IBM Bob IDE</span><span class="tech-pill">ICA Context Studio</span><span class="tech-pill">Agentic App Studio</span><span class="tech-pill">React</span><span class="tech-pill">Node.js</span></div>
             <div class="proj-desc"><ul>
-                <li>AI-powered deal solutioning assistant that turns client RFP/RFI documents into structured solution proposals — executive summary, requirements, tech stack, risks & mitigations</li>
-                <li>Designed the full solution architecture connecting IBM Bob, Context Studio, Agentic App Studio, and the React front end</li>
-                <li>Authored the JSON-LD ontology schema for Context Studio spanning 5 entities, 3 operations, and 4 lifecycle states</li>
-                <li>Designed the agent prompt sequence and YAML configuration; supports multi-turn chat with full session context and PDF export</li>
-                <li>Built as part of a 5-member team ("Bob Build Operate Boost") for IBM's internal Bobathon 2026 hackathon</li>
+                <li>AI deal-solutioning assistant that turns client RFP/RFI docs into structured proposals — summary, requirements, tech stack, risks & mitigations</li>
+                <li>Designed the solution architecture linking IBM Bob, Context Studio, Agentic App Studio, and the React front end</li>
+                <li>Authored the JSON-LD ontology schema for Context Studio (5 entities, 3 operations, 4 lifecycle states)</li>
+                <li>Multi-turn chat with full session context; built with a 4-member team for IBM's internal hackathon</li>
             </ul></div>
         </div>
 
         <div class="project-card">
             <div class="proj-top"><div class="proj-title">AEM Orchestrated AI Generator</div><div class="proj-date">2025 – 2026</div></div>
-            <span class="proj-badge">★ IBM Bench Project · Full-Stack OSGi Bundle</span>
-            <div class="proj-tech"><span class="tech-pill">Java 11 / OSGi</span><span class="tech-pill">AEM 6.5 / AEMaaCS</span><span class="tech-pill">Apache Sling</span><span class="tech-pill">Groq</span><span class="tech-pill">Claude</span><span class="tech-pill">IBM Sidekick</span><span class="tech-pill">IBM ICA Gateway</span><span class="tech-pill">Figma API</span><span class="tech-pill">RAG</span><span class="tech-pill">LLM Orchestration</span><span class="tech-pill">Maven</span><span class="tech-pill">HTL</span><span class="tech-pill">JCR</span></div>
+            <span class="proj-badge">★ IBM Bench Project</span>
+            <div class="proj-tech"><span class="tech-pill">Java / OSGi</span><span class="tech-pill">AEM 6.5 / AEMaaCS</span><span class="tech-pill">Groq · Claude · IBM ICA</span><span class="tech-pill">Figma API</span><span class="tech-pill">RAG</span><span class="tech-pill">Maven</span></div>
             <div class="proj-desc"><ul>
-                <li>End-to-end AI code & content generation platform deployed as an AEM OSGi bundle — turns natural-language prompts or Figma URLs into production-ready HTL components, Sling Models, OSGi services, editable templates, workflow models, and Content Fragment models, written directly to disk for Maven deployment</li>
-                <li><strong>4-provider LLM router:</strong> Groq (llama-3.3-70b-versatile), Anthropic Claude, IBM Sidekick, and the newly integrated IBM ICA OpenAI-compatible gateway (LiteLLM — Claude Sonnet 5, GPT, Granite), all sharing three routing methods with per-request API key resolution</li>
-                <li>Orchestrated multi-artifact generation: a single prompt triggers LLM task planning, sorts tasks by execution order, and generates HTL + dialog XML + Sling Model + clientlibs, OSGi, templates, and workflows in one request</li>
-                <li>Figma-to-AEM pipeline: recursive design-tree analysis (frames, text, images, components) auto-generates matching HTL components and page templates with policy XML</li>
-                <li>3-step RAG pipeline for Content Fragment model reuse decisions (CREATE_NEW / EXTEND / REUSE), backed by a filesystem-persisted JSON store with configurable similarity thresholds</li>
-                <li>Standalone AutoBuild system — Java WatchService + polling, debounce, and cooldown — triggers automated Maven builds and AEM deployment after every generation</li>
-                <li>Wired IBM ICA 2.0 as a 4th LLM provider, including smart temperature handling and graceful vision-to-text fallback</li>
+                <li>AI-powered OSGi bundle that turns prompts or Figma URLs into production-ready AEM components, OSGi services, templates & Content Fragments</li>
+                <li>4-provider LLM router (Groq, Claude, IBM Sidekick, IBM ICA gateway) with orchestrated multi-artifact generation</li>
+                <li>RAG-based Content Fragment reuse engine and a Figma-to-AEM design pipeline</li>
+                <li>Standalone AutoBuild system triggers Maven builds automatically after each generation</li>
             </ul></div>
             <a href="https://github.com/HV66/aem-ai-generator" class="proj-link" target="_blank">View on GitHub →</a>
         </div>
@@ -468,30 +468,21 @@
     </div>
     <div class="cert-grid">
         <div class="cert-group">
-            <h3>General & Industry</h3>
+            <h3>IBM RAG & Agentic AI Certificate <span class="cert-count">8</span></h3>
             <div class="cert-list">
-                <div class="cert-item">2026 IBMer watsonx Challenge — IBM</div>
-                <div class="cert-item">Bobathon Innovator — IBM</div>
-                <div class="cert-item">IBM Bob Intermediate — IBM</div>
-                <div class="cert-item">AWS Certified Cloud Practitioner — AWS</div>
-                <div class="cert-item">IBM RAG & Agentic AI Professional Certificate — IBM/Coursera</div>
-                <div class="cert-item">Adobe Certified Professional — AEM Developer</div>
-                <div class="cert-item">IBM Generative & Agentic AI Foundation — 2026</div>
-                <div class="cert-item">Develop Generative AI Applications: Get Started</div>
-                <div class="cert-item">Advanced RAG with Vector Databases and Retrievers</div>
-                <div class="cert-item">Build RAG Applications: Get Started</div>
-                <div class="cert-item">Agentic AI with LangGraph, CrewAI, AutoGen and BeeAI</div>
-                <div class="cert-item">Agentic AI with LangChain and LangGraph</div>
-                <div class="cert-item">Build Multimodal Generative AI Applications</div>
-                <div class="cert-item">AI Fundamentals — IBM SkillsBuild</div>
-                <div class="cert-item">Enterprise Design Thinking Practitioner — IBM</div>
-                <div class="cert-item">Python 101 for Data Science — IBM CognitiveClass</div>
-                <div class="cert-item">What is Generative AI — LinkedIn Learning</div>
-                <div class="cert-item">Quantum Enigmas — IBM SkillsBuild</div>
+                <div class="cert-item cert-item-main">🏅 IBM RAG & Agentic AI Professional Certificate — IBM/Coursera</div>
+                <div class="cert-sub-label">Specialization courses</div>
+                <div class="cert-item">Develop Generative AI Applications: Get Started — Coursera</div>
+                <div class="cert-item">Fundamentals of Building AI Agents — Coursera</div>
+                <div class="cert-item">Advanced RAG with Vector Databases and Retrievers — Coursera</div>
+                <div class="cert-item">Agentic AI with LangChain and LangGraph — Coursera</div>
+                <div class="cert-item">Agentic AI with LangGraph, CrewAI, AutoGen and BeeAI — Coursera</div>
+                <div class="cert-item">Build Multimodal Generative AI Applications — Coursera</div>
+                <div class="cert-item">Build RAG Applications: Get Started — Coursera</div>
             </div>
         </div>
         <div class="cert-group">
-            <h3>WISER Quantum Program</h3>
+            <h3>WISER Quantum Program <span class="cert-count">7</span></h3>
             <div class="cert-list">
                 <div class="cert-item">Quantum Computing & Programming (QBronze) — QWorld & WISER 2025</div>
                 <div class="cert-item">Quantum Algorithms for Portfolio Optimization — Vanguard & WISER</div>
@@ -499,6 +490,27 @@
                 <div class="cert-item">Quantum Algorithms for PDEs (Module 2) — WISER</div>
                 <div class="cert-item">LCU Challenge Certificate — PennyLane & WISER</div>
                 <div class="cert-item">Trotterization Challenge Certificate — PennyLane & WISER</div>
+                <div class="cert-item">Quantum Enigmas — IBM SkillsBuild</div>
+            </div>
+        </div>
+        <div class="cert-group">
+            <h3>IBM Enterprise & Hackathons <span class="cert-count">5</span></h3>
+            <div class="cert-list">
+                <div class="cert-item">2026 IBMer watsonx Challenge — IBM</div>
+                <div class="cert-item">Bobathon Innovator — IBM</div>
+                <div class="cert-item">IBM Bob Intermediate — IBM</div>
+                <div class="cert-item">Adobe Certified Professional — AEM Developer</div>
+                <div class="cert-item">Enterprise Design Thinking Practitioner — IBM</div>
+            </div>
+        </div>
+        <div class="cert-group">
+            <h3>Foundational & Cloud <span class="cert-count">5</span></h3>
+            <div class="cert-list">
+                <div class="cert-item">AWS Certified Cloud Practitioner — AWS</div>
+                <div class="cert-item">IBM Generative & Agentic AI Foundation — 2026</div>
+                <div class="cert-item">AI Fundamentals — IBM SkillsBuild</div>
+                <div class="cert-item">Python 101 for Data Science — IBM CognitiveClass</div>
+                <div class="cert-item">What is Generative AI — LinkedIn Learning</div>
             </div>
         </div>
     </div>
