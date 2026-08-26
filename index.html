@@ -272,7 +272,7 @@
                 A 2025 B.Tech ECE (Cyber Physical Systems) graduate from SASTRA Deemed University, I've independently built an AI-powered code generator for AEM using LLM orchestration, RAG pipelines, and Figma-to-Code automation — all during bench time. I'm equally comfortable deep-diving into quantum circuits or shipping production OSGi microservices. I'm also a published IEEE researcher in Quantum Cryptography.
             </p>
             <div class="stats-row">
-                <div class="stat-card"><div class="stat-num">8+</div><div class="stat-label">Months at IBM</div></div>
+                <div class="stat-card"><div class="stat-num">9+</div><div class="stat-label">Months at IBM</div></div>
                 <div class="stat-card"><div class="stat-num">8</div><div class="stat-label">Projects</div></div>
                 <div class="stat-card"><div class="stat-num">15+</div><div class="stat-label">Certifications</div></div>
                 <div class="stat-card"><div class="stat-num">1</div><div class="stat-label">IEEE Publication</div></div>
@@ -368,11 +368,9 @@
             <span class="proj-badge">★ IBM watsonx Challenge — Consulting Track</span>
             <div class="proj-tech"><span class="tech-pill">IBM Agent Studio</span><span class="tech-pill">ICA Context Studio</span><span class="tech-pill">Process Studio</span><span class="tech-pill">IBM Bob</span><span class="tech-pill">RAG</span><span class="tech-pill">Node.js / Express</span><span class="tech-pill">Post-Quantum Cryptography</span></div>
             <div class="proj-desc"><ul>
-                <li>Built a <strong>Quantum-Safe Cryptography Discovery & Readiness Assessment Copilot</strong> — a 3-agent <strong>Discover → Assess → Report</strong> pipeline that scans codebases for quantum-vulnerable cryptographic primitives (RSA, ECDSA, DES, MD5, SHA-1) and produces a <strong>Cryptographic Bill of Materials (CBOM)</strong></li>
-                <li>Discover Agent flags algorithms as <strong>needs-review</strong>; Assess Agent classifies approved/deprecated status with a weighted composite risk score and attaches migration rules plus <strong>NIST PQC (FIPS 203/204/205)</strong> references; Report Agent drafts a CISO-readable 5-section report gated behind a <strong>mandatory human approval checkpoint</strong></li>
-                <li>Designed a <strong>JSON-LD ontology schema</strong> (CryptoAlgorithm, AssetCriticality, MigrationRule, NISTStandard, QuantumResourceEstimate entities) and ingested a RAG knowledge base of NIST standards, quantum resource estimation research, and migration playbooks into <strong>ICA Context Studio</strong></li>
-                <li>Authored the internal crypto policy reference (<strong>ACME-CRYPTO-POL-2026-001</strong>) and orchestrated the multi-agent YAML pipeline on <strong>IBM Agent Studio</strong>, plus a Node.js/Express proxy backend fronting a chat UI that calls the agent flow via Langflow</li>
-                <li>Submitted for the <strong>2026 IBMer watsonx Challenge</strong> as a quantum-readiness assessment tool for enterprise cryptographic risk discovery</li>
+                <li>Quantum-Safe Cryptography Discovery & Readiness Assessment Copilot — a 3-agent <strong>Discover → Assess → Report</strong> pipeline scanning codebases for quantum-vulnerable primitives (RSA, ECDSA, DES, MD5, SHA-1) into a <strong>Cryptographic Bill of Materials (CBOM)</strong>, with risk scoring against <strong>NIST PQC (FIPS 203/204/205)</strong> and a mandatory human approval checkpoint</li>
+                <li>Designed the <strong>JSON-LD ontology schema</strong> and RAG knowledge base in <strong>ICA Context Studio</strong>, and orchestrated the multi-agent YAML pipeline on <strong>IBM Agent Studio</strong> behind a Node.js/Express chat proxy</li>
+                <li>Submitted for the <strong>2026 IBMer watsonx Challenge</strong> (Consulting track) as an enterprise quantum-readiness assessment tool</li>
             </ul></div>
         </div>
 
@@ -381,10 +379,11 @@
             <span class="proj-badge">★ IBM Bobathon 2026 — APAC</span>
             <div class="proj-tech"><span class="tech-pill">IBM Bob IDE</span><span class="tech-pill">ICA Context Studio</span><span class="tech-pill">Agentic App Studio</span><span class="tech-pill">React</span><span class="tech-pill">Node.js</span></div>
             <div class="proj-desc"><ul>
-                <li>AI deal-solutioning assistant that turns client RFP/RFI docs into structured proposals — summary, requirements, tech stack, risks & mitigations</li>
-                <li>Designed the solution architecture linking IBM Bob, Context Studio, Agentic App Studio, and the React front end</li>
-                <li>Authored the JSON-LD ontology schema for Context Studio (5 entities, 3 operations, 4 lifecycle states)</li>
-                <li>Multi-turn chat with full session context; built with a 4-member team for IBM's internal hackathon</li>
+                <li>AI deal-solutioning assistant that turns client RFP/RFI documents into structured proposals — automatically extracting a summary, requirements, recommended tech stack, and risks & mitigations for consulting teams</li>
+                <li>Designed the end-to-end solution architecture linking IBM Bob, ICA Context Studio, Agentic App Studio, and a React/Node.js front end into a single agentic workflow</li>
+                <li>Authored the JSON-LD ontology schema ingested into Context Studio — 5 entities, 3 operations, and 4 lifecycle states modeling the RFP-to-proposal process</li>
+                <li>Built a multi-turn chat experience that preserves full session context across proposal iterations, so users can refine requirements or regenerate sections conversationally</li>
+                <li>Built with a 4-member team for IBM's internal Bobathon hackathon, from architecture design through to a working demo</li>
             </ul></div>
         </div>
 
@@ -393,10 +392,11 @@
             <span class="proj-badge">★ IBM Bench Project</span>
             <div class="proj-tech"><span class="tech-pill">Java / OSGi</span><span class="tech-pill">AEM 6.5 / AEMaaCS</span><span class="tech-pill">Groq · Claude · IBM ICA</span><span class="tech-pill">Figma API</span><span class="tech-pill">RAG</span><span class="tech-pill">Maven</span></div>
             <div class="proj-desc"><ul>
-                <li>AI-powered OSGi bundle that turns prompts or Figma URLs into production-ready AEM components, OSGi services, templates & Content Fragments</li>
-                <li>4-provider LLM router (Groq, Claude, IBM Sidekick, IBM ICA gateway) with orchestrated multi-artifact generation</li>
-                <li>RAG-based Content Fragment reuse engine and a Figma-to-AEM design pipeline</li>
-                <li>Standalone AutoBuild system triggers Maven builds automatically after each generation</li>
+                <li>Self-initiated AI-powered OSGi bundle, built during bench time, that turns natural-language prompts or Figma URLs into production-ready AEM components, dialogs, OSGi services, editable templates & Content Fragments</li>
+                <li>4-provider LLM router (Groq, Claude, IBM Sidekick, IBM ICA gateway) with a multi-task orchestration engine that plans and generates multiple related artifacts in a single pass</li>
+                <li>RAG-based Content Fragment reuse engine that retrieves and adapts existing fragments instead of regenerating from scratch, plus a Figma-to-AEM design pipeline that parses design trees and exports frame images for vision-based generation</li>
+                <li>Standalone AutoBuild system that triggers Maven builds automatically after each generation, with filesystem-based project config persistence and a PackageResolver for dynamic sub-package resolution</li>
+                <li>Exposed through custom AEM servlet endpoints with CSRF protection, plus dedicated AEM UI pages for project configuration and generation control</li>
             </ul></div>
             <a href="https://github.com/HV66/aem-ai-generator" class="proj-link" target="_blank">View on GitHub →</a>
         </div>
@@ -487,8 +487,9 @@
     </div>
     <div class="cert-grid">
         <div class="cert-group">
-            <h3>Foundational & Cloud <span class="cert-count">5</span></h3>
+            <h3>Foundational & Cloud <span class="cert-count">6</span></h3>
             <div class="cert-list">
+                <div class="cert-item">Claude Certified Associate - Foundations — Anthropic</div>
                 <div class="cert-item">AWS Certified Cloud Practitioner — AWS</div>
                 <div class="cert-item">IBM Generative & Agentic AI Foundation — 2026</div>
                 <div class="cert-item">AI Fundamentals — IBM SkillsBuild</div>
